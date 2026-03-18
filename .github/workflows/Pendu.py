@@ -12,3 +12,13 @@ def indexs(lettre, caractere):
 def remplacer(mot1,ncaractere,index):
   #insere le nouveau string "tranches" et l'original
   return mot1[:index]+ ncaractere+ mot1[index+1:]
+
+def pendu():
+  mot = random.choice(Mots)
+  essais=6
+  #compte combien d'essais il reste 
+  lettres=[]
+  [lettres.append(i) for i in mot if i not in lettres]
+  #la liste qui contient toute les lettres dans le mot donnÃ© 
+  montrer="*"*len(mot)
+  # remplace les lettres par des asterisque
