@@ -23,7 +23,7 @@ def pendu():
   montrer="*"*len(mot)
   # remplace les lettres par des asterisque
 
-while True:
+  while True:
     if montrer==mot:
       print("gagner felicitation :)!!!!")
       break
@@ -32,7 +32,7 @@ while True:
       print("le mot etait:"+ mot)
       break
   #boucle avec une condition d'arret si le joueur a gagner ou si il lui reste plus d'essais 
-deviner=str(input("Mot : " + montrer + " | Essais restants : " + str(essais) + "\n"))
+    deviner=str(input("Mot : " + montrer + " | Essais restants : " + str(essais) + "\n"))
     if deviner==mot:
       print("gagnant felicitations !!!")
       break
