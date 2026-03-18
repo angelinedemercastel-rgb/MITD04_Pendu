@@ -22,3 +22,13 @@ def pendu():
   #la liste qui contient toute les lettres dans le mot donnÃ© 
   montrer="*"*len(mot)
   # remplace les lettres par des asterisque
+
+while True:
+    if montrer==mot:
+      print("gagner felicitation :)!!!!")
+      break
+    elif not essais:
+      print("oops ressayer :(")
+      print("le mot etait:"+ mot)
+      break
+  #boucle avec une condition d'arret si le joueur a gagner ou si il lui reste plus d'essais 
