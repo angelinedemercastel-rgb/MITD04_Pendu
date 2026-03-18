@@ -43,3 +43,4 @@ deviner=str(input("Mot : " + montrer + " | Essais restants : " + str(essais) + "
       #remplace les asterisques avec la bonne lettre 
     else:
        essais-=1
+pendu()
