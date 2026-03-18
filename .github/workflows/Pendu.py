@@ -32,3 +32,14 @@ while True:
       print("le mot etait:"+ mot)
       break
   #boucle avec une condition d'arret si le joueur a gagner ou si il lui reste plus d'essais 
+deviner=str(input("Mot : " + montrer + " | Essais restants : " + str(essais) + "\n"))
+    if deviner==mot:
+      print("gagnant felicitations !!!")
+      break
+    elif deviner in lettres:
+      #si le joueur devine la lettre c'est correct 
+      for i in indexs(deviner, mot):
+        montrer=remplacer(montrer, deviner, i)
+      #remplace les asterisques avec la bonne lettre 
+    else:
+       essais-=1
