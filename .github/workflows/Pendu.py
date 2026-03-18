@@ -15,7 +15,7 @@ def remplacer(mot1,ncaractere,index):
    '''
 insere le nouveau string "tranches" et l'original
  '''
- return mot1[:index]+ ncaractere+ mot1[index+1:]
+    return mot1[:index]+ ncaractere+ mot1[index+1:]
 
 def pendu():
   mot = random.choice(Mots)
