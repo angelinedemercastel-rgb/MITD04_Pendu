@@ -33,3 +33,11 @@ def listeIndexLettre(lettre,mot):
         if lettre == mot[i]:
             lIndex.append(i)
     return lIndex
+
+def ajouterMot(chemin):
+    print("Chemin", chemin)
+    file=open(chemin,"a")
+    word = input("Mot nouveau : ")
+    indication = input("Indication : ")
+    s=file.writelines("\n"+word+","+indication)
+    file.close()
