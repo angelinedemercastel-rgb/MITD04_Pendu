@@ -99,4 +99,38 @@ funcList.append(dessinerJambeGauche)
 funcList.append(dessinerBrasGauche)
 funcList.append(dessinerBrasDroit)
 funcList.append(dessinerTronc)
+funcList.append(dessinerBouche)
+funcList.append(dessinerTete)
+
+#FRAME 1
+frame1 = Frame(fen, bg='ivory',bd=2)
+frame1.grid(row=0, column=0, columnspan=7, sticky='new',padx=5,pady=5)
+
+lbl_score = Label(frame1, text="Score : ", font="Arial 12",bg='ivory').grid(row=1, column=1,pady=5,padx=5)
+lbl_score_value = Label(frame1, text="", font="Arial 12",bg='ivory')
+lbl_score_value.grid(row=1, column=2,pady=5,padx=5)
+
+lbl_motATrouver = Label(frame1, text="Mot à trouver : ", font="Arial 12",bg='ivory').grid(row=2, column=1,pady=5,padx=5)
+
+lbl_motSecret = Label(frame1, text="", font="Arial 16",bg='ivory')
+lbl_motSecret.grid(row=2, column=2,pady=5,padx=5)
+'''lbl_chaine = Label(frame1, text="")
+lbl_chaine.grid(row=1, column=2)'''
+
+lbl_resultat = Label(frame1, text="", font="Arial 14",bg='ivory')
+lbl_resultat.grid(row=2, column=4)
+
+#FRAME 2
+frame2 = Frame(fen, bd=2)
+frame2.grid_rowconfigure(0, weight=1)
+frame2.grid_columnconfigure(0, weight=1)
+frame2.grid(row=1,  column=0, sticky='nsew', padx=5,pady=5)
+canvas=Canvas(frame2, width=590, height=380, bg='ivory')
+dessinerPotence()
+'''canvas.bind("<Button-1>", pointeur)'''
+canvas.grid(row=0, column=0, sticky="nsew")
+
+
+
+fen.mainloop()
 
