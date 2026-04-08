@@ -1,6 +1,6 @@
 MITD_04
 Pendu
-GitHub : Angéline.\n
+GitHub : Angéline.
 Pour l'instant, on a le code de base que l'on a fait tous ensemble. Mais à partir de l'interface graphique, on va se répartir les tâches de façon à : 
 - celui qui gère le score
 - le personnage
