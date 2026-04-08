@@ -60,7 +60,7 @@ def choisirMot():
 def afficheMotsecret(mot):
     longueurMot = len(mot)
     print("longueur du mot", longueurMot)
-    motsecret = ["X" for  in mot]
+    motsecret = ["X" for _ in mot]
     return "".join(mot_secret)
 
 def indicesLettre(lettre, mot_a_deviner):
