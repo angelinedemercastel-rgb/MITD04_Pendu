@@ -79,3 +79,20 @@ def jouer():
         rep = input("Voulez-vous choisir un autre mot ? (O/N) : ")
         if rep == 'N':
             rejouer = False
+
+quitter = False
+
+while quitter == False :
+    choix = lireChoix()
+    match choix:
+        case "J":
+            jouer()
+        case "A":
+            ajouterMot(cheminFichier)
+        case "Q":
+            quitter = True
+        case _:
+            print("\nAttention ! Choix incorrect\n")
+
+
+print("\nAu revoir ")
