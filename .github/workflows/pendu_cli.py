@@ -41,3 +41,41 @@ def ajouterMot(chemin):
     indication = input("Indication : ")
     s=file.writelines("\n"+word+","+indication)
     file.close()
+
+def jouer():
+    rejouer = True
+    while rejouer == True :
+        mot_a_deviner,indice = random.choice(lireListeMots(cheminFichier))
+        print(mot_a_deviner, indice)
+
+        longueurMot = len(mot_a_deviner)
+        print("longueur du mot", longueurMot)
+        motsecret = ["*" for  in mot_a_deviner]
+        print("".join(mot_secret))
+
+        score = 7
+        while score > 0:
+            lettre = input("Proposez une lettre : ").lower()
+            print(lettre)
+
+            li = listeIndexLettre(lettre,mot_a_deviner)
+            #print(li)
+            if len(li)==0:
+                score=score-1
+                print("score : ", score)
+            else :
+                for i in li:
+                    mot_secret[i] = lettre
+                    print("".join(mot_secret))
+
+            if "".join(mot_secret).find('*') == -1:
+                print("Bravo vous avez trouvé le mot. Votre score est : ",score)
+                break
+
+        if score == 0:
+            print("Vous avez perdu !")
+            print("Le mot à trouver était : ", mot_a_deviner)
+
+        rep = input("Voulez-vous choisir un autre mot ? (O/N) : ")
+        if rep == 'N':
+            rejouer = False
