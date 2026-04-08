@@ -50,7 +50,7 @@ def jouer():
 
         longueurMot = len(mot_a_deviner)
         print("longueur du mot", longueurMot)
-        motsecret = ["*" for  in mot_a_deviner]
+        motsecret = ["*" for _ in mot_a_deviner]
         print("".join(mot_secret))
 
         score = 7
