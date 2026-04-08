@@ -58,3 +58,45 @@ def dessinerJambeGauche():
     global jambeGauche
     xC,yC,xD,yD = 315,266,360,320
     jambeGauche = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
+
+'''
+Fonction :
+'''
+def dessinerBrasGauche():
+    global brasGauche
+    xC,yC,xD,yD = 315,216,360,190
+    brasGauche = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
+
+'''
+Fonction :
+'''
+def dessinerBrasDroit():
+    global brasDroit
+    xC,yC,xD,yD = 315,216,270,190
+    brasDroit = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
+
+
+fen = Tk()
+fen.title('Jeu du Pendu - Mai 2025 - V1.0')
+fen.geometry("600x700")
+fen.resizable(False, False)
+
+fen.grid_rowconfigure(0,weight=1)
+fen.grid_rowconfigure(1,weight=1)
+fen.grid_rowconfigure(2,weight=1)
+fen.grid_columnconfigure(0,weight=1)
+fen.grid_columnconfigure(1,weight=1)
+fen.grid_columnconfigure(2,weight=1)
+
+resultat=StringVar()
+
+
+
+
+funcList = []
+funcList.append(dessinerJambeDroite)
+funcList.append(dessinerJambeGauche)
+funcList.append(dessinerBrasGauche)
+funcList.append(dessinerBrasDroit)
+funcList.append(dessinerTronc)
+... (36lignes restantes)
