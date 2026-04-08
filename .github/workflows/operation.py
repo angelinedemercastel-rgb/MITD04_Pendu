@@ -38,3 +38,31 @@ def listeIndexLettre(lettre,mot):
         if lettre == mot[i]:
             lIndex.append(i)
     return lIndex
+
+def ajouterMot(chemin):
+    print("Chemin", chemin)
+    file=open(chemin,"a")
+    word = input("Mot nouveau : ")
+    indication = input("Indication : ")
+    s=file.writelines("\n"+word+","+indication)
+    file.close()
+
+def ajouterMotIHM(chemin,mot,indication):
+    print("Chemin", chemin)
+    file=open(chemin,"a")
+    s=file.writelines("\n"+mot+","+indication)
+    file.close()
+
+def choisirMot():
+    mot_a_deviner,indice = random.choice(lireListeMots(cheminFichier))
+    return mot_a_deviner,indice
+
+def afficheMotsecret(mot):
+    longueurMot = len(mot)
+    print("longueur du mot", longueurMot)
+    motsecret = ["X" for  in mot]
+    return "".join(mot_secret)
+
+def indicesLettre(lettre, mot_a_deviner):
+    li = listeIndexLettre(lettre,mot_a_deviner)
+    return li
