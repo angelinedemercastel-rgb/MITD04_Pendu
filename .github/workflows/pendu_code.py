@@ -99,4 +99,4 @@ funcList.append(dessinerJambeGauche)
 funcList.append(dessinerBrasGauche)
 funcList.append(dessinerBrasDroit)
 funcList.append(dessinerTronc)
-... (36lignes restantes)
+
