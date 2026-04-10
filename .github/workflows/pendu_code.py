@@ -77,7 +77,7 @@ def dessinerBrasDroit():
 
 
 fen = Tk()
-fen.title('Jeu du Pendu - Mai 2025 - V1.0')
+fen.title('Jeu du Pendu - Mai 2026 - V1.0')
 fen.geometry("600x700")
 fen.resizable(False, False)
 
