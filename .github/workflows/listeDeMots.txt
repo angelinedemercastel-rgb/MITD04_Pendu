@@ -80,7 +80,7 @@ fleur,Coloree et parfumee
 flûte,Instrument à vent
 foret,Remplie d'arbres
 fourchette,Sert à manger
-fusee,Va dans l espace
+fusée,Va dans l espace
 gateau,Dessert d anniversaire
 girafe,Animal au long cou
 globe,Representation de la Terre
