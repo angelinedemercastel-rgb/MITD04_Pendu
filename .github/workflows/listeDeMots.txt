@@ -1,6 +1,6 @@
 abeille,Insecte producteur de miel
 abricot,Fruit orange à noyau
-accordeon,Instrument de musique à soufflet
+accordéon,Instrument de musique à soufflet
 acteur,Personne jouant dans un film
 addition,Operation mathématique
 aigle,Oiseau rapace
@@ -11,7 +11,7 @@ ancre,Garde un bateau en place
 angle,Forme par deux lignes qui se croisent
 animal,être vivant non humain
 antenne,Capte les ondes
-araignee,Tisse une toile
+araignée,Tisse une toile
 arbre,Plante à tronc
 armure,Protection pour chevalier
 astronaute,Va dans l'espace
@@ -19,9 +19,9 @@ avion,Transporte dans les airs
 baleine,Plus grand animal marin
 ballon,Rond et souvent gonfle
 banane,Fruit jaune
-barometre,Mesure la pression
+baromètre,Mesure la pression
 bateau,Navigue sur l'eau
-bibliotheque,Lieu de lecture
+bibliothèque,Lieu de lecture
 bicyclette,Vehicule à deux roues
 bijou,Ornement precieux
 bison,Gros animal d Amerique
@@ -30,55 +30,55 @@ bonbon,Sucrerie
 bouquet,Ensemble de fleurs
 boussole,Indique le nord
 brouillard,Reduit la visibilite
-cacahuete,Graine souvent salee
+cacahuète,Graine souvent salee
 cactus,Plante du desert
 calendrier,Organise les jours
-cameleon,Change de couleur
-camera,Sert a filmer
+caméléon,Change de couleur
+caméra,Sert a filmer
 camping,Vacances sous tente
 capitaine,Chef sur un bateau
 carotte,Légume orange
 cartable,Sert a porter les cahiers
 cascade,Chute d'eau
 cassoulet,Plat du Sud-Ouest
-chateau,Residence royale
+château,Residence royale
 chat,Animal domestique qui ronronne
-cheval,Animal à criniere
+cheval,Animal à crinière
 chocolat,Fait à partir de cacao
-cigogne,Oiseau associe aux bebes
+cigogne,Oiseau associe aux bébés
 citron,Agrume jaune et acide
-cle,Sert à ouvrir une serrure
+clé,Sert à ouvrir une serrure
 clown,Fait rire dans un cirque
 coiffeur,Coupe les cheveux
 collier,Bijou de cou
-comete,Corps celeste lumineux
+comète,Corps céleste lumineux
 compas,Trace des cercles
 coquillage,Trouve sur la plage
 corbeau,Oiseau noir
 crayon,Sert à ecrire
 crocodile,Reptile a grandes machoires
-cuisine,Lieu où l'on prepare les repas
-dauphin,Mammifere marin intelligent
-desert,Region très sèche
+cuisine,Lieu où l'on prépare les repas
+dauphin,Mammifère marin intelligent
+désert,Region très sèche
 dictionnaire,Livre de mots
-dinosaure,Animal prehistorique
+dinosaure,Animal préhistorique
 docteur,Soigne les malades
-dragon,Creature legendaire
-echelle,Sert a monter
-ecole,Lieu d'apprentissage
-ecureuil,Aime les noisettes
-elephant,Animal avec une trompe
-eleve,Apprend à l'école
-emeraude,Pierre precieuse verte
+dragon,Créature légendaire
+échelle,Sert à monter
+école,Lieu d'apprentissage
+écureuil,Aime les noisettes
+élephant,Animal avec une trompe
+élève,Apprend à l'école
+émeraude,Pierre précieuse verte
 escargot,Avance lentement avec sa coquille
 espion,Agent secret
-etoile,Brille dans le ciel la nuit
+étoile,Brille dans le ciel la nuit
 fantome,Esprit d outre-tombe
 ferme,Exploitation agricole
-feu,Chaleur et lumiere
-fleur,Coloree et parfumee
+feu,Chaleur et lumière
+fleur,Colorée et parfumée
 flûte,Instrument à vent
-foret,Remplie d'arbres
+fôret,Remplie d'arbres
 fourchette,Sert à manger
 fusée,Va dans l espace
 gateau,Dessert d anniversaire
@@ -97,11 +97,11 @@ kiwi,Fruit poilu et vert
 lampe,Source de lumière
 lune,Satellite naturel de la Terre
 maison,Lieu d habitation
-mammifere,Classe d'animaux a poils
+mammifère,Classe d'animaux a poils
 manger,Action de consommer de la nourriture
-montagne,elevation naturelle du sol
+montagne,élévation naturelle du sol
 nid,Abri des oiseaux
-ocean,Grande etendue d eau salee
+océan,Grande etendue d eau salee
 orange,Fruit rond et juteux
 papillon,Insecte colore
 parapluie,Protege de la pluie
@@ -114,4 +114,4 @@ quartz,Mineral dur et transparent
 arbre,dans la nature
 requin,animal marin
 poisson,animal marin
-eclipse,Quand la lumière disparait mais pas pour toujours
+éclipse,Quand la lumière disparait mais pas pour toujours
