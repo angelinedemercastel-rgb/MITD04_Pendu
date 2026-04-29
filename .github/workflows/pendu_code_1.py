@@ -528,6 +528,7 @@ btn_quitter_jeu = Button(frame3, text="Quitter le jeu", font="Arial 12", bg='ivo
 btn_quitter_jeu.grid(row=3, column=1, padx=5, pady=10)
 
 nouveauMot()
+menu_principal()
 
 
 fen.mainloop()
