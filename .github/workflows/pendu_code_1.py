@@ -335,6 +335,12 @@ def ouvreFichierScore() :
     texte.config(state="disabled")
     texte.pack(padx=10, pady=10)
 
+lettreSaisie =""
+mot_secret = ""
+mot_a_deviner = ""
+indice_mot = ""
+score=7
+
 '''
 def pointeur(event):
     lbl_chaine.config(text="X= " +str(event.x)+ ",Y= "+str(event.y))
