@@ -303,6 +303,38 @@ def effacePendu():
         err = "widget inexistant"
         print(err)
 
+def afficheRegles():
+    window = Toplevel(fen)# Création d'une nouvelle fenêtre
+    window.title("Règles du jeu")# Définition du titre
+    window.geometry("300x200")# Dimensions de la fenêtre
+
+    # Personnalisation de la fenêtre
+    window.configure(bg="ivory",relief="raised")# Changement de couleur de fond et du relief
+
+    # Gestion des interactions avec la fenêtre
+    window.transient(fen)# Place la fenêtre fille au-dessus de la fenêtre parent
+    window.grab_set()# Empêche l'utilisateur d'interagir avec la fenêtre parent
+    window.focus_set()# Donne le focus à la fenêtre fille
+    label= Label(window, text= "Le but du jeu est simple : \n deviner toute les lettres \n qui doivent composer un mot,\n avec un nombre de tentatives \n limité à 6. \n A chaque fois que le joueur \n devine une lettre, celle-ci est\n affichée. Dans le cas contraire,\n le dessin d’un pendu se met à \n apparaître…", font= ('Aerial', 12))
+    label.pack()
+
+def enregistreScore (score) :
+    FichierScore= open("./fichierScore.txt", "a")
+    FichierScore.write(op.dateEtHeure() + "   " + str(score) + "\n")
+    FichierScore.close()
+
+def ouvreFichierScore() :
+    FichierScore= open("./fichierScore.txt", encoding="utf-8")
+    contenu = FichierScore.read()
+    FichierScore.close()
+
+    fenetre = Toplevel(fen)
+    fenetre.title("Scores")
+    texte = Text(fenetre, width=40, height=10)
+    texte.insert("1.0", contenu)
+    texte.config(state="disabled")
+    texte.pack(padx=10, pady=10)
+
 '''
 def pointeur(event):
     lbl_chaine.config(text="X= " +str(event.x)+ ",Y= "+str(event.y))
@@ -322,6 +354,18 @@ fen.grid_columnconfigure(1,weight=1)
 fen.grid_columnconfigure(2,weight=1)
 
 resultat=StringVar()
+
+#Menu principal
+menu_principal= Menu(fen)
+menu1 = Menu(menu_principal, tearoff=0)
+menu1.add_command(label="Ajouter un nouveau mot",command=ajouterMot)
+menu1.add_command(label="Règles du jeu",command=afficheRegles)
+menu1.add_command(label="Voir les scores", command=ouvreFichierScore)
+menu1.add_command(label="Quitter", command=fen.destroy)
+
+menu_principal.add_cascade(label="Menu", menu=menu1)
+
+fen.config(menu=menu_principal)
 
 funcList = []
 funcList.append(dessinerJambeDroite)
