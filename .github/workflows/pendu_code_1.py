@@ -2,7 +2,7 @@ from tkinter import *
 <<<<<<< HEAD
 import operation as op
 =======
-import operations as op
+import operation as op
 from PIL import Image, ImageTk
 >>>>>>> c663528004cd20479f40624f35ba24d22f81871e
 
