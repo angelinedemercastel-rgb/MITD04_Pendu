@@ -1,21 +1,64 @@
 from tkinter import *
 import operations as op
+from PIL import Image, ImageTk
 
-'''
-Fonction : rejouer
-Remet chaine vide les chaines de caracteres
-Réinitialise l'affichage
-Sélectionne un nouveau mot dans la liste
-'''
+# ---------------- MENU ----------------
+
+def ouvrir_jeu():
+    frame1.grid()
+    frame2.grid()
+    frame3.grid()
+    nouveauMot()
+    afficheScore()
+
+def retour_menu():
+    frame1.grid_remove()
+    frame2.grid_remove()
+    frame3.grid_remove()
+    menu_principal()
+
+def menu_principal():
+    global accueil
+    accueil = Frame(fen, bg="ivory")
+    accueil.place(relwidth=1, relheight=1)
+
+    Label(accueil, text="JEU DU PENDU", font=("Arial", 30), bg="yellow").pack(pady=50)
+
+    Button(accueil, text="Jouer", width=20, height=2,
+           command=lambda: [accueil.destroy(), ouvrir_jeu()],bg="yellow").pack(pady=20)
+
+    Button(accueil, text="Ajouter un mot", width=20, height=2,
+           command=ajouterMot,bg="yellow").pack(pady=20)
+
+    Button(accueil, text="Règles du jeu", width=20, height=2,
+           command=afficheRegles,bg="yellow").pack(pady=20)
+
+    Button(accueil, text="Scores", width=20, height=2,
+           command=ouvreFichierScore,bg="yellow").pack(pady=20)
+
+    Button(accueil, text="Quitter", width=20, height=2,
+           command=fen.destroy,bg="yellow").pack(pady=20)
+    
+    global bg_menu_image
+
+    bg_menu = Label(accueil, image=bg_menu_image)
+    bg_menu.place(x=0, y=0, relwidth=1, relheight=1)
+    bg_menu.lower()
+    
+
+
+
+# ---------------- JEU ----------------
 def rejouer():
     global score
-    lettreSaisie =""
-    mot_secret = ""
-    mot_a_deviner = ""
-    indice_mot = ""
     razAffichage()
+    canvas.delete("visage")  # efface la tête
+    # 🔥 REMETTRE LE FOND
+    canvas.create_image(0, 0, image=canvas.bg_canvas, anchor="nw")
+    # 🔥 REMETTRE LA POTENCE
+    dessinerPotence()
     nouveauMot()
-    score=7
+    score = 7
 '''
 Fonction : validerNouveauMot
 '''
@@ -196,6 +239,7 @@ def traiterLettre(event):
     if "".join(mot_secret).find('_') == -1:
         print("Bravo vous avez trouvé le mot. Votre score est : ",score)
         afficheResultat("Bravo !")
+        dessinerVisageContent()
         afficheScore()
         desactive_entry()
         enregistreScore(score)
@@ -204,6 +248,7 @@ def traiterLettre(event):
         print("Vous avez perdu !")
         print("Le mot à trouver était : ", mot_a_deviner)
         afficheResultat("Perdu ! Solution : "+mot_a_deviner)
+        dessinerVisageTriste()
         desactive_entry()
         enregistreScore(score)
 
@@ -241,6 +286,38 @@ def dessinerTete():
     oeilDroit = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='ivory')
     xJ,yJ, xK, yK = 319,170, 326,180
     oeilGauche = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='ivory')
+
+def dessinerVisageContent():
+    canvas.delete("all")  # efface tout
+
+    canvas.create_image(0, 0, image=canvas.bg_canvas, anchor="nw")
+
+    # tête
+    canvas.create_oval(150, 50, 450, 350, fill="pink", outline="black", width=3)
+
+    # yeux
+    canvas.create_oval(210, 130, 270, 200, fill="black")
+    canvas.create_oval(330, 130, 390, 200, fill="black")
+
+    # sourire
+    canvas.create_arc(220, 180, 380, 300, start=200, extent=140, style="arc", width=4)
+
+def dessinerVisageTriste():
+    canvas.delete("all")  # efface tout
+
+    canvas.create_image(0, 0, image=canvas.bg_canvas, anchor="nw")
+
+    # tête
+    canvas.create_oval(150, 50, 450, 350, fill="pink", outline="black", width=3)
+
+    # yeux
+    canvas.create_oval(210, 130, 270, 200, fill="black")
+    canvas.create_oval(330, 130, 390, 200, fill="black")
+
+    # bouche triste
+    canvas.create_arc(220, 220, 380, 320, start=20, extent=140, style="arc", width=4)
+
+
 
 def dessinerBouche():
     global bouche
@@ -341,15 +418,26 @@ mot_a_deviner = ""
 indice_mot = ""
 score=7
 
-'''
-def pointeur(event):
-    lbl_chaine.config(text="X= " +str(event.x)+ ",Y= "+str(event.y))
-'''
 
-#--------------------------------------DEBUT--------------------------------------------------------------
+
+#--------------------------------------FENETRE--------------------------------------------------------------
 fen = Tk()
+image_menu = Image.open("IMG_6422.jpg")
+image_menu = image_menu.resize((600, 700))
+bg_menu_image = ImageTk.PhotoImage(image_menu)
+
 fen.title('Jeu du Pendu - Mai 2026 - V1.0')
 fen.geometry("600x700")
+
+# --- IMAGE DE FOND ---
+image_fond = Image.open("IMG_6422.jpg")
+image_fond = image_fond.resize((600, 700))  # adapter à la fenêtre
+bg_image = ImageTk.PhotoImage(image_fond)
+
+background_label = Label(fen, image=bg_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+
 fen.resizable(False, False)
 
 fen.grid_rowconfigure(0,weight=1)
@@ -361,17 +449,6 @@ fen.grid_columnconfigure(2,weight=1)
 
 resultat=StringVar()
 
-#Menu principal
-menu_principal= Menu(fen)
-menu1 = Menu(menu_principal, tearoff=0)
-menu1.add_command(label="Ajouter un nouveau mot",command=ajouterMot)
-menu1.add_command(label="Règles du jeu",command=afficheRegles)
-menu1.add_command(label="Voir les scores", command=ouvreFichierScore)
-menu1.add_command(label="Quitter", command=fen.destroy)
-
-menu_principal.add_cascade(label="Menu", menu=menu1)
-
-fen.config(menu=menu_principal)
 
 funcList = []
 funcList.append(dessinerJambeDroite)
@@ -404,15 +481,25 @@ lbl_resultat.grid(row=2, column=4)
 frame2 = Frame(fen, bd=2)
 frame2.grid_rowconfigure(0, weight=1)
 frame2.grid_columnconfigure(0, weight=1)
-frame2.grid(row=1,  column=0, sticky='nsew', padx=5,pady=5)
-canvas=Canvas(frame2, width=590, height=380, bg='ivory')
+frame2.grid_remove()
+
+canvas = Canvas(frame2, width=590, height=380, highlightthickness=0)
+canvas.grid(row=0, column=0, sticky="nsew")
+
+# Image de fond directement dans le canvas
+bg_canvas = ImageTk.PhotoImage(Image.open("IMG.jpg").resize((590, 380)))
+canvas.bg_canvas = bg_canvas
+canvas.create_image(0, 0, image=bg_canvas, anchor="nw")
+
+
 dessinerPotence()
+
 '''canvas.bind("<Button-1>", pointeur)'''
 canvas.grid(row=0, column=0, sticky="nsew")
 
 #FRAME 3
 frame3 = Frame(fen, bg='ivory',bd=2)
-frame3.grid(row=2, column=0, columnspan=7, sticky='sew',padx=5,pady=5)
+frame3.grid_remove()
 
 indiceOn= IntVar()
 cac_indice = Checkbutton(frame3, text = "Indice",
@@ -437,6 +524,8 @@ lbl_MessageErreur.grid(row=2, column=2,pady=5,padx=5)
 
 btn_rejouer = Button(frame3, text="Rejouer",font="Arial 12",bg='ivory',command=rejouer)
 btn_rejouer.grid(row=3, column=0,padx=5,pady=10)
+btn_quitter_jeu = Button(frame3, text="Quitter le jeu", font="Arial 12", bg='ivory', command=retour_menu)
+btn_quitter_jeu.grid(row=3, column=1, padx=5, pady=10)
 
 nouveauMot()
 
