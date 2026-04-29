@@ -283,9 +283,9 @@ def dessinerTete():
     xJ,yJ, xK, yK = 290,155, 340,205
     tete = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='pink')
     xJ,yJ, xK, yK = 304,170, 311,180
-    oeilDroit = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='pink')
+    oeilDroit = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='black')
     xJ,yJ, xK, yK = 319,170, 326,180
-    oeilGauche = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='pink')
+    oeilGauche = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='black')
 
 def dessinerVisageContent():
     canvas.delete("all")  # efface tout
