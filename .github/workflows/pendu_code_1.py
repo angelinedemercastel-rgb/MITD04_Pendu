@@ -272,3 +272,124 @@ def dessinerJambeGauche():
     xC,yC,xD,yD = 315,266,360,320
     jambeGauche = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
 
+'''
+Fonction :
+'''
+def dessinerBrasGauche():
+    global brasGauche
+    xC,yC,xD,yD = 315,216,360,190
+    brasGauche = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
+
+'''
+Fonction :
+'''
+def dessinerBrasDroit():
+    global brasDroit
+    xC,yC,xD,yD = 315,216,270,190
+    brasDroit = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
+
+def effacePendu():
+    try :
+        canvas.delete(tete)
+        canvas.delete(oeilDroit)
+        canvas.delete(oeilGauche)
+        canvas.delete(bouche)
+        canvas.delete(tronc)
+        canvas.delete(brasDroit)
+        canvas.delete(brasGauche)
+        canvas.delete(jambeGauche)
+        canvas.delete(jambeDroite)
+    except :
+        err = "widget inexistant"
+        print(err)
+
+'''
+def pointeur(event):
+    lbl_chaine.config(text="X= " +str(event.x)+ ",Y= "+str(event.y))
+'''
+
+#--------------------------------------DEBUT--------------------------------------------------------------
+fen = Tk()
+fen.title('Jeu du Pendu - Mai 2026 - V1.0')
+fen.geometry("600x700")
+fen.resizable(False, False)
+
+fen.grid_rowconfigure(0,weight=1)
+fen.grid_rowconfigure(1,weight=1)
+fen.grid_rowconfigure(2,weight=1)
+fen.grid_columnconfigure(0,weight=1)
+fen.grid_columnconfigure(1,weight=1)
+fen.grid_columnconfigure(2,weight=1)
+
+resultat=StringVar()
+
+funcList = []
+funcList.append(dessinerJambeDroite)
+funcList.append(dessinerJambeGauche)
+funcList.append(dessinerBrasGauche)
+funcList.append(dessinerBrasDroit)
+funcList.append(dessinerTronc)
+funcList.append(dessinerBouche)
+funcList.append(dessinerTete)
+
+#FRAME 1
+frame1 = Frame(fen, bg='ivory',bd=2)
+frame1.grid(row=0, column=0, columnspan=7, sticky='new',padx=5,pady=5)
+
+lbl_score = Label(frame1, text="Score : ", font="Arial 12",bg='ivory').grid(row=1, column=1,pady=5,padx=5)
+lbl_score_value = Label(frame1, text="", font="Arial 12",bg='ivory')
+lbl_score_value.grid(row=1, column=2,pady=5,padx=5)
+
+lbl_motATrouver = Label(frame1, text="Mot à trouver : ", font="Arial 12",bg='ivory').grid(row=2, column=1,pady=5,padx=5)
+
+lbl_motSecret = Label(frame1, text="", font="Arial 16",bg='ivory')
+lbl_motSecret.grid(row=2, column=2,pady=5,padx=5)
+'''lbl_chaine = Label(frame1, text="")
+lbl_chaine.grid(row=1, column=2)'''
+
+lbl_resultat = Label(frame1, text="", font="Arial 14",bg='ivory')
+lbl_resultat.grid(row=2, column=4)
+
+#FRAME 2
+frame2 = Frame(fen, bd=2)
+frame2.grid_rowconfigure(0, weight=1)
+frame2.grid_columnconfigure(0, weight=1)
+frame2.grid(row=1,  column=0, sticky='nsew', padx=5,pady=5)
+canvas=Canvas(frame2, width=590, height=380, bg='ivory')
+dessinerPotence()
+'''canvas.bind("<Button-1>", pointeur)'''
+canvas.grid(row=0, column=0, sticky="nsew")
+
+#FRAME 3
+frame3 = Frame(fen, bg='ivory',bd=2)
+frame3.grid(row=2, column=0, columnspan=7, sticky='sew',padx=5,pady=5)
+
+indiceOn= IntVar()
+cac_indice = Checkbutton(frame3, text = "Indice",
+                            height = 2, width = 10, font="Arial 12",bg='ivory',
+                            variable=indiceOn,
+                            command=checkCacIndice)
+cac_indice.grid(row=1, column=0,pady=5,padx=5)
+
+lbl_indice = Label(frame3, text="", font="Arial 12",bg='ivory')
+lbl_indice.grid(row=1, column=2,pady=5,padx=5)
+
+
+lbl_Proposition = Label(frame3, text="Proposition de lettre : ", font="Arial 12",bg='ivory').grid(row=2, column=0,pady=5,padx=5)
+
+ent_saisie = Entry(frame3, width=3, font="Arial 12")
+ent_saisie.grid(row=2, column=1,pady=15,padx=5, sticky='w')
+ent_saisie.bind("<Return>",traiterLettre)
+
+
+lbl_MessageErreur = Label(frame3, text="", font="Arial 12",bg='ivory',fg='red')
+lbl_MessageErreur.grid(row=2, column=2,pady=5,padx=5)
+
+btn_rejouer = Button(frame3, text="Rejouer",font="Arial 12",bg='ivory',command=rejouer)
+btn_rejouer.grid(row=3, column=0,padx=5,pady=10)
+
+nouveauMot()
+
+
+fen.mainloop()
+
