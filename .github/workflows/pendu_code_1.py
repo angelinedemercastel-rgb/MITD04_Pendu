@@ -322,7 +322,7 @@ def dessinerVisageTriste():
 def dessinerBouche():
     global bouche
     xJ,yJ, xK, yK = 310,188, 320,200
-    bouche = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='ivory')
+    bouche = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='red')
 
 
 '''
