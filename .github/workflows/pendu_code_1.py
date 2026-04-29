@@ -277,7 +277,7 @@ def dessinerPotence():
     cHonritaleDE = canvas.create_line(xD-10, yD, xE, yE, width=8, fill='black')
     cObliqueFG = canvas.create_line(xF, yF, xG, yG, width=8, fill='black')
     cCordeHI = canvas.create_line(xH, yH, xI, yI, width=4, fill='black')
-    cOvale = canvas.create_oval(xJ, yJ, xK, yK, width=4, fill='ivory')
+    cOvale = canvas.create_oval(xJ, yJ, xK, yK, width=4, outline='black')
 
 '''
 Fonction :
