@@ -100,6 +100,10 @@ def validerNouveauMot():
     fenetreAddWord.destroy()
 '''
 Fonction :
+        Crée une nouvelle fenêtre qui permet au joueur de rentrer
+        un nouveau mot avec son indication
+        avec un bouton pour valider qui fait appelle à la fonction
+        validerNouveauMot
 '''
 def ajouterMot():
     global eMot, eIndice,fenetreAddWord
@@ -120,6 +124,8 @@ def ajouterMot():
 
 '''
 Fonction :
+        Choisi aléatoirement un nouveau mot (et son indice)
+        qui deviens le mot secret et l'affiche (_)
 '''
 def nouveauMot():
     global mot_a_deviner
@@ -133,6 +139,9 @@ def nouveauMot():
 
 '''
 Fonction :
+        Vérifie si la case à cocher est cocher 
+        si oui : affcihe indice
+        si non : n'affiche pas 
 '''
 def checkCacIndice():
     global indice_mot
@@ -143,12 +152,16 @@ def checkCacIndice():
 
 '''
 Fonction :
+        affiche le mot secret avec des espaces entre chaque
+        lettre qui sont mise en majuscule
 '''
 def afficheMotSecret():
     lbl_motSecret.config(text=" ".join(mot_secret.upper()))
 
 '''
 Fonction :
+        Affiche un message d'erreur 
+        puis remet la case vide 
 '''
 def afficheMessageErreur(msgErreur):
     lbl_MessageErreur.config(text=msgErreur)
@@ -156,17 +169,21 @@ def afficheMessageErreur(msgErreur):
 
 '''
 Fonction :
+        Efface le message d'erreur affiché
 '''
 def effacerMessageErreur(msgErreur):
     lbl_MessageErreur.config(text=msgErreur)
 '''
 Fonction :
+        Affiche l'indice du mot à deviner
 '''
 def afficheIndice(indice_mot):
     lbl_indice.config(text=indice_mot)
 
 '''
-
+Fonction :
+        si le résultat est "bravo" : le résultat en vert
+        si non : le résultat en rouge
 '''
 def afficheResultat(resultat):
     lbl_resultat.config(text=resultat)
@@ -174,8 +191,10 @@ def afficheResultat(resultat):
         lbl_resultat.config(fg="green")
     else :
         lbl_resultat.config(fg="red")
-'''
 
+'''
+Fonction :
+        Efface le résultat affiché
 '''
 def effaceResultat(resultat):
     lbl_resultat.config(text=resultat)
