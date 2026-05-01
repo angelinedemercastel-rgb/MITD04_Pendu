@@ -1,10 +1,4 @@
 from tkinter import *
-<<<<<<< HEAD
-<<<<<<< HEAD
-import operation as op
-=======
-=======
->>>>>>> d19afef1b703822eed3d127c2c29c7736bd08c0b
 import operations as op
 from PIL import Image, ImageTk
 
