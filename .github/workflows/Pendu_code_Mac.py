@@ -1,4 +1,3 @@
-# Pendu_code_mac
 from tkinter import *
 import Operation_Mac as op
 from PIL import Image, ImageTk
@@ -6,6 +5,10 @@ import os
 
 # ---------------- MENU ----------------
 
+'''Fonction : 
+        affiche les frame du jeu (donc le score, le canva et la saisie du joueur) 
+        et choisi un nouveau mot et remet le score à 7 chances
+'''
 def ouvrir_jeu():
     frame1.grid()
     frame2.grid()
@@ -13,12 +16,23 @@ def ouvrir_jeu():
     nouveauMot()
     afficheScore()
 
+''' Fonction :
+        retire les frames
+        affiche le menu principal
+'''
 def retour_menu():
     frame1.grid_remove()
     frame2.grid_remove()
     frame3.grid_remove()
     menu_principal()
 
+
+''' Fonction :
+        créé la fenêtre d'accueil et l'affiche
+        avec les boutons (Jouer, Ajouter mot, règles jeu
+        scores, quitter
+        Avec un image d'arrière plan
+'''
 def menu_principal():
     global accueil
     accueil = Frame(fen, bg="ivory")
@@ -51,6 +65,13 @@ def menu_principal():
 
 
 # ---------------- JEU ----------------
+''' Fonction : 
+        Remet l'affichage à zero (réinitialise le pendu)
+        remet le fond et la potence
+        redessine la potence
+        choisi un autre mot 
+        remet le score à 7
+'''
 def rejouer():
     global score
     razAffichage()
@@ -61,8 +82,13 @@ def rejouer():
     dessinerPotence()
     nouveauMot()
     score = 7
+
 '''
 Fonction : validerNouveauMot
+        récupère le mot et l'indice de l'utilisateur
+        puis vérifie la taille du mot
+        si c'est bon : ajouter au fichier Liste de Mots
+        puis ferme la fenêtre
 '''
 def validerNouveauMot():
     mot=eMot.get()
