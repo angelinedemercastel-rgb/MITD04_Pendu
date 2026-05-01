@@ -1,10 +1,8 @@
+# Pendu_code_mac
 from tkinter import *
-<<<<<<< HEAD
-import operation as op
-=======
-import operations as op
+import Operation_Mac as op
 from PIL import Image, ImageTk
->>>>>>> c663528004cd20479f40624f35ba24d22f81871e
+import os
 
 # ---------------- MENU ----------------
 
@@ -426,7 +424,7 @@ score=7
 
 #--------------------------------------FENETRE--------------------------------------------------------------
 fen = Tk()
-image_menu = Image.open("IMG_6422.jpg")
+image_menu = Image.open(os.path.abspath(os.path.join(os.path.dirname(__file__), "Images", "IMG_6422.png"))) # changement
 image_menu = image_menu.resize((600, 700))
 bg_menu_image = ImageTk.PhotoImage(image_menu)
 
@@ -434,7 +432,7 @@ fen.title('Jeu du Pendu - Mai 2026 - V1.0')
 fen.geometry("600x700")
 
 # --- IMAGE DE FOND ---
-image_fond = Image.open("IMG_6422.jpg")
+image_fond = Image.open(os.path.abspath(os.path.join(os.path.dirname(__file__), "Images", "IMG_6422.png"))) # changement
 image_fond = image_fond.resize((600, 700))  # adapter à la fenêtre
 bg_image = ImageTk.PhotoImage(image_fond)
 
@@ -491,7 +489,7 @@ canvas = Canvas(frame2, width=590, height=380, highlightthickness=0)
 canvas.grid(row=0, column=0, sticky="nsew")
 
 # Image de fond directement dans le canvas
-bg_canvas = ImageTk.PhotoImage(Image.open("IMG.jpg").resize((590, 380)))
+bg_canvas = ImageTk.PhotoImage(Image.open(os.path.abspath(os.path.join(os.path.dirname(__file__), "Images", "IMG.png"))).resize((590, 380))) # chanegement
 canvas.bg_canvas = bg_canvas
 canvas.create_image(0, 0, image=bg_canvas, anchor="nw")
 
@@ -536,4 +534,3 @@ menu_principal()
 
 
 fen.mainloop()
-
