@@ -1,10 +1,13 @@
 from tkinter import *
 <<<<<<< HEAD
+<<<<<<< HEAD
 import operation as op
 =======
+=======
+>>>>>>> d19afef1b703822eed3d127c2c29c7736bd08c0b
 import operations as op
 from PIL import Image, ImageTk
->>>>>>> c663528004cd20479f40624f35ba24d22f81871e
+
 
 # ---------------- MENU ----------------
 
@@ -57,9 +60,7 @@ def rejouer():
     global score
     razAffichage()
     canvas.delete("visage")  # efface la tête
-    # 🔥 REMETTRE LE FOND
     canvas.create_image(0, 0, image=canvas.bg_canvas, anchor="nw")
-    # 🔥 REMETTRE LA POTENCE
     dessinerPotence()
     nouveauMot()
     score = 7
@@ -277,7 +278,7 @@ def dessinerPotence():
     cHonritaleDE = canvas.create_line(xD-10, yD, xE, yE, width=8, fill='black')
     cObliqueFG = canvas.create_line(xF, yF, xG, yG, width=8, fill='black')
     cCordeHI = canvas.create_line(xH, yH, xI, yI, width=4, fill='black')
-    cOvale = canvas.create_oval(xJ, yJ, xK, yK, width=4, fill='ivory')
+    cOvale = canvas.create_oval(xJ, yJ, xK, yK, width=4, outline='black')
 
 '''
 Fonction :
