@@ -1,6 +1,5 @@
 from tkinter import *
-import operation as op
-import operation as op
+import operations as op
 from PIL import Image, ImageTk
 
 
