@@ -35,7 +35,7 @@ def lireChoix():
 '''
 def lireListeMots(chemin) :
     print("Chemin", chemin)
-    file=open(chemin, "r", encoding="cp1252")
+    file=open(chemin, "r", encoding="utf-8")
     lignes = file.readlines()
     for ligne in lignes :
         ligne=ligne.strip()
