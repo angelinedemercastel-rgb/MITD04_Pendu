@@ -517,7 +517,7 @@ def enregistreScore (score) :
 
 '''Fonction :
         lit le contenu du fichier des scores
-        l'affiche dans une autre fenêtre qui ne peut être changée
+        l'affiche dans une autre fenêtre qui ne peut être changé 
 '''
 def ouvreFichierScore() :
     FichierScore= open("./fichierScore.txt", encoding="utf-8")
