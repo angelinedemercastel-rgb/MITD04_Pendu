@@ -4,7 +4,10 @@ from PIL import Image, ImageTk
 
 
 # ---------------- MENU ----------------
-
+'''Fonction : 
+        affiche les frame du jeu (donc le score, le canva et la saisie du joueur) 
+        et choisi un nouveau mot et remet le score à 7 chances
+'''
 def ouvrir_jeu():
     frame1.grid()
     frame2.grid()
@@ -12,12 +15,24 @@ def ouvrir_jeu():
     nouveauMot()
     afficheScore()
 
+
+''' Fonction :
+        retire les frames
+        affiche le menu principal
+'''
 def retour_menu():
     frame1.grid_remove()
     frame2.grid_remove()
     frame3.grid_remove()
     menu_principal()
 
+
+''' Fonction :
+        créé la fenêtre d'accueil et l'affiche
+        avec les boutons (Jouer, Ajouter mot, règles jeu
+        scores, quitter
+        Avec un image d'arrière plan
+'''
 def menu_principal():
     global accueil
     accueil = Frame(fen, bg="ivory")
@@ -50,6 +65,13 @@ def menu_principal():
 
 
 # ---------------- JEU ----------------
+''' Fonction : 
+        Remet l'affichage à zero (réinitialise le pendu)
+        remet le fond et la potence
+        redessine la potence
+        choisi un autre mot 
+        remet le score à 7
+'''
 def rejouer():
     global score
     razAffichage()
@@ -58,8 +80,15 @@ def rejouer():
     dessinerPotence()
     nouveauMot()
     score = 7
+
+
 '''
 Fonction : validerNouveauMot
+        récupère le mot et l'indice de l'utilisateur
+        puis vérifie la taille du mot
+        si c'est bon : ajouter au fichier Liste de Mots
+        puis ferme la fenêtre
+
 '''
 def validerNouveauMot():
     mot=eMot.get()
@@ -69,8 +98,14 @@ def validerNouveauMot():
     if len(mot)!=0 :
         op.ajouterMotIHM(op.cheminFichier,mot,indice)
     fenetreAddWord.destroy()
+
+
 '''
 Fonction :
+        Crée une nouvelle fenêtre qui permet au joueur de rentrer
+        un nouveau mot avec son indication
+        avec un bouton pour valider qui fait appelle à la fonction
+        validerNouveauMot
 '''
 def ajouterMot():
     global eMot, eIndice,fenetreAddWord
@@ -89,8 +124,11 @@ def ajouterMot():
     eIndice.grid(row =1, column =2,pady=5,padx=5)
     buttonValidationNouveauMot.grid(row =3, column =1,columnspan=2, pady=5,padx=5)
 
+
 '''
 Fonction :
+        Choisi aléatoirement un nouveau mot (et son indice)
+        qui deviens le mot secret et l'affiche (_)
 '''
 def nouveauMot():
     global mot_a_deviner
@@ -102,8 +140,12 @@ def nouveauMot():
     #print(mot_secret)
     afficheMotSecret()
 
+
 '''
 Fonction :
+        Vérifie si la case à cocher est cocher 
+        si oui : affcihe indice
+        si non : n'affiche pas 
 '''
 def checkCacIndice():
     global indice_mot
@@ -112,32 +154,46 @@ def checkCacIndice():
     elif indiceOn.get() == 0:
         supprimeIndice()
 
+
 '''
 Fonction :
+        affiche le mot secret avec des espaces entre chaque
+        lettre qui sont mise en majuscule
 '''
 def afficheMotSecret():
     lbl_motSecret.config(text=" ".join(mot_secret.upper()))
 
+
 '''
 Fonction :
+        Affiche un message d'erreur 
+        puis remet la case vide 
 '''
 def afficheMessageErreur(msgErreur):
     lbl_MessageErreur.config(text=msgErreur)
     razProposition()
 
+
 '''
 Fonction :
+        Efface le message d'erreur affiché
 '''
 def effacerMessageErreur(msgErreur):
     lbl_MessageErreur.config(text=msgErreur)
+
+
 '''
 Fonction :
+        Affiche l'indice du mot à deviner
 '''
 def afficheIndice(indice_mot):
     lbl_indice.config(text=indice_mot)
 
-'''
 
+'''
+Fonction :
+        si le résultat est "bravo" : le résultat en vert
+        si non : le résultat en rouge
 '''
 def afficheResultat(resultat):
     lbl_resultat.config(text=resultat)
@@ -145,36 +201,45 @@ def afficheResultat(resultat):
         lbl_resultat.config(fg="green")
     else :
         lbl_resultat.config(fg="red")
-'''
 
+
+'''
+Fonction :
+        Efface le résultat affiché
 '''
 def effaceResultat(resultat):
     lbl_resultat.config(text=resultat)
 
+
 '''
 Fonction :
-
+        Le label de l'indice est vidé
 '''
 def supprimeIndice():
     lbl_indice.config(text="")
 
+
 '''
 Fonction :
-
+        Affiche le score actuelle du joueur
 '''
 def afficheScore():
     lbl_score_value.config(text=str(score))
 
+
 '''
 Fonction :
-
+        Décoche la case indice
 '''
 def decocheCacIndice():
     cac_indice.deselect()
 
+
 '''
 Fonction :
-
+        Remet à zéro tous les éléments d'affichage
+        (score, indice, mot secret, pendu, resultat, saisie du joueur)
+        et remet possible la saisie du joueur
 '''
 def razAffichage():
     lbl_score_value.config(text="")
@@ -186,31 +251,47 @@ def razAffichage():
     effacePendu()
     lbl_resultat.config(text="")
 
+
 '''
 Fonction :
-
+        remet à zero la zone de saisie
+        et ce n'est plus possible de rentrer des lettres
 '''
 def desactive_entry():
     razProposition()
     ent_saisie.config(state= "disabled")
 
+
 '''
 Fonction :
-
+        remet à zero la zone de saisie
+        le joueur peut mettre des lettres
 '''
 def active_entry():
     razProposition()
     ent_saisie.config(state= "normal")
 
+
 '''
 Fonction :
-
+        vide la zone de saisie
 '''
 def razProposition():
    ent_saisie.delete(0, END)
 
+
 '''
 Fonction :
+        utilisé pour chaque entrée 
+        vérifie que la saisie est possible (1 seule lettre)
+        vérifie si l'entrée de joueur est dans le mot
+        si oui : met à jour le mot secret
+        si non : joueur perd 1 point
+        puis vérifie si le mot entier est trouvé (plus de _)
+        -> affiche la victoire (visage, mot)
+        ou si le score est 0 (défaite)
+        -> affiche la défaite
+        enregistre le score dans le fichier
 '''
 def traiterLettre(event):
     global listeIndice, score, mot_secret
@@ -253,9 +334,11 @@ def traiterLettre(event):
 
     razProposition()
 
+
 '''
 Fonction :
-
+        déssine la potence sur le canva
+        avec le trait de la base, le trait verticale, horizontale, oblique, corde et tête (ovale)
 '''
 def dessinerPotence():
     #A(250,600) B(300,600) C(275,600) D(,) E(,) F(,) G(,)
@@ -274,8 +357,10 @@ def dessinerPotence():
     cCordeHI = canvas.create_line(xH, yH, xI, yI, width=4, fill='black')
     cOvale = canvas.create_oval(xJ, yJ, xK, yK, width=4, outline='black')
 
+
 '''
 Fonction :
+        déssine la tête du pendu avec des yeux
 '''
 def dessinerTete():
     global tete, oeilDroit, oeilGauche
@@ -286,6 +371,11 @@ def dessinerTete():
     xJ,yJ, xK, yK = 319,170, 326,180
     oeilGauche = canvas.create_oval(xJ, yJ, xK, yK, width=3, fill='black')
 
+
+'''Fonction :
+        efface le canva, remet le fond
+        dessine un visage content (sourire)
+'''
 def dessinerVisageContent():
     canvas.delete("all")  # efface tout
 
@@ -301,6 +391,11 @@ def dessinerVisageContent():
     # sourire
     canvas.create_arc(220, 180, 380, 300, start=200, extent=140, style="arc", width=4)
 
+
+'''Fonction :
+        efface le canva, remet le fond
+        dessine un visage triste
+'''
 def dessinerVisageTriste():
     canvas.delete("all")  # efface tout
 
@@ -317,7 +412,8 @@ def dessinerVisageTriste():
     canvas.create_arc(220, 220, 380, 320, start=20, extent=140, style="arc", width=4)
 
 
-
+'''Fonction :
+        dessine la bouche du pendu '''
 def dessinerBouche():
     global bouche
     xJ,yJ, xK, yK = 310,188, 320,200
@@ -326,6 +422,7 @@ def dessinerBouche():
 
 '''
 Fonction :
+        dessine le coprs du pendu 
 '''
 def dessinerTronc():
     global tronc
@@ -334,6 +431,7 @@ def dessinerTronc():
 
 '''
 Fonction :
+        dessine la jambe droite du pendu
 '''
 def dessinerJambeDroite():
     global jambeDroite
@@ -342,6 +440,7 @@ def dessinerJambeDroite():
 
 '''
 Fonction :
+        dessine la jambe gauche du pendu
 '''
 def dessinerJambeGauche():
     global jambeGauche
@@ -350,6 +449,7 @@ def dessinerJambeGauche():
 
 '''
 Fonction :
+        dessine le bras gauche du pendu
 '''
 def dessinerBrasGauche():
     global brasGauche
@@ -358,12 +458,18 @@ def dessinerBrasGauche():
 
 '''
 Fonction :
+        dessine le bras droit du pendu
 '''
 def dessinerBrasDroit():
     global brasDroit
     xC,yC,xD,yD = 315,216,270,190
     brasDroit = canvas.create_line(xC, yC, xD, yD, width=3, fill='black')
 
+
+'''Fonction :
+        efface tous les éléments du corps du pendu
+        ignore les erreur si un élément du corps n'a pas été dessiné
+'''
 def effacePendu():
     try :
         canvas.delete(tete)
@@ -379,6 +485,11 @@ def effacePendu():
         err = "widget inexistant"
         print(err)
 
+
+'''Fonction :
+        crée une nouvelle fenêtre pour afficher les règles du jeu
+        tant que cette fenêtre est ouvert, l'utilisateur ne pourra pas jouer
+'''
 def afficheRegles():
     window = Toplevel(fen)# Création d'une nouvelle fenêtre
     window.title("Règles du jeu")# Définition du titre
@@ -394,11 +505,20 @@ def afficheRegles():
     label= Label(window, text= "Le but du jeu est simple : \n deviner toute les lettres \n qui doivent composer un mot,\n avec un nombre de tentatives \n limité à 6. \n A chaque fois que le joueur \n devine une lettre, celle-ci est\n affichée. Dans le cas contraire,\n le dessin d’un pendu se met à \n apparaître…", font= ('Aerial', 12))
     label.pack()
 
+
+'''Fonction : 
+        ajoute au fichier du score la date, l'heure et le score d'une partie 
+'''
 def enregistreScore (score) :
     FichierScore= open("./fichierScore.txt", "a")
     FichierScore.write(op.dateEtHeure() + "   " + str(score) + "\n")
     FichierScore.close()
 
+
+'''Fonction :
+        lit le contenu du fichier des scores
+        l'affiche dans une autre fenêtre qui ne peut être changée
+'''
 def ouvreFichierScore() :
     FichierScore= open("./fichierScore.txt", encoding="utf-8")
     contenu = FichierScore.read()
