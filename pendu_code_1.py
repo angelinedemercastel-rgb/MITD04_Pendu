@@ -580,7 +580,7 @@ funcList.append(dessinerTete)
 
 #FRAME 1
 frame1 = Frame(fen, bg='ivory',bd=2)
-frame1.grid(row=0, column=0, columnspan=7, sticky='new',padx=5,pady=5)
+frame1.grid_remove()
 
 lbl_score = Label(frame1, text="Score : ", font="Arial 12",bg='ivory').grid(row=1, column=1,pady=5,padx=5)
 lbl_score_value = Label(frame1, text="", font="Arial 12",bg='ivory')
