@@ -105,10 +105,11 @@ def validerNouveauMot():
 
 '''
 Fonction :
-        Crée une nouvelle fenêtre qui permet au joueur de rentrer
+        Crée une nouvelle page (avec image de fond) qui permet au joueur de rentrer
         un nouveau mot avec son indication
         avec un bouton pour valider qui fait appelle à la fonction
         validerNouveauMot
+        et bouton retour pour fermer la page
 '''
 def ajouterMot():
     global eMot, eIndice, page_ouverte
@@ -550,7 +551,9 @@ def enregistreScore (score) :
 
 '''Fonction :
         lit le contenu du fichier des scores
-        l'affiche dans une autre fenêtre qui ne peut être changé 
+        l'affiche dans une nouvelle page avec l'image de fond
+        pas modifiable
+        avec bouton pour fermer  
 '''
 def ouvreFichierScore() :
     FichierScore= open("./fichierScore.txt", encoding="utf-8")

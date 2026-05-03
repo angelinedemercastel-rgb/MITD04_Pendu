@@ -21,7 +21,6 @@ ballon,Rond et souvent gonfle
 banane,Fruit jaune
 baromètre,Mesure la pression
 bateau,Navigue sur l'eau
-bibliothèque,Lieu de lecture
 bicyclette,Vehicule à deux roues
 bijou,Ornement precieux
 bison,Gros animal d Amerique
