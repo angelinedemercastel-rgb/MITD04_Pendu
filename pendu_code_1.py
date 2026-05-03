@@ -682,9 +682,9 @@ ent_saisie.bind("<Return>",traiterLettre)
 lbl_MessageErreur = Label(frame3, text="", font="Arial 12",bg='#A8E6EF',fg='red')
 lbl_MessageErreur.grid(row=2, column=2,pady=5,padx=5)
 
-btn_rejouer = Button(frame3, text="Rejouer",font="Arial 12",bg='ivory',command=rejouer)
+btn_rejouer = Button(frame3, text="Rejouer",font="Arial 12",bg='#ECEFF1',command=rejouer)
 btn_rejouer.grid(row=3, column=0,padx=5,pady=10)
-btn_quitter_jeu = Button(frame3, text="Quitter le jeu", font="Arial 12", bg='ivory', command=retour_menu)
+btn_quitter_jeu = Button(frame3, text="Quitter le jeu", font="Arial 12", bg='#ECEFF1', command=retour_menu)
 btn_quitter_jeu.grid(row=3, column=1, padx=5, pady=10)
 
 nouveauMot()
