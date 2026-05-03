@@ -1,4 +1,4 @@
-[organigramme_pendu.pdf](https://github.com/user-attachments/files/27318654/organigramme_pendu.pdf)# MITD04_Pendu
+# MITD04_Pendu
 
 ## Description du projet du Jeu du Pendu
 
