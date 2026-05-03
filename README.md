@@ -42,9 +42,12 @@ l'application affiche en rouge le message suivant : "Veuillez saisir une lettre"
 
 ## Interface Homme Machine
 
-Image d'une partie : <img width="1200" height="1468" alt="Jeu_en_marche" src="https://github.com/user-attachments/assets/ff68eea3-d164-472e-829a-502374961abc" />
-Image de la page d'acceuil : <img width="1200" height="1468" alt="fenêtre_options" src="https://github.com/user-attachments/assets/ca09cae2-6d06-4af5-8c62-63b5b171d4b0" />
-Image d'une partie gagné : <img width="1184" height="1448" alt="Partie_gagnee" src="https://github.com/user-attachments/assets/dc7b5994-7140-4921-8820-7b739c7cfb15" />
+Image d'une partie : <img width="1180" height="1434" alt="Jeu_en_marche" src="https://github.com/user-attachments/assets/d2a0c080-ee1b-4873-8b83-c2c8a3c1dd0a" />
+
+Image de la page d'acceuil : <img width="1192" height="1446" alt="fenetre_options" src="https://github.com/user-attachments/assets/9cba48d7-87c3-414f-8bf1-dbf050b51b7c" />
+
+Image d'une partie perdue : <img width="1188" height="1448" alt="Partie_perdue" src="https://github.com/user-attachments/assets/4336774a-a5ac-42df-9f04-cae20300fdd2" />
+
 
 ## Auteurs
 
