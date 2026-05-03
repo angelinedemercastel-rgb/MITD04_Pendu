@@ -149,9 +149,7 @@ def nouveauMot():
     global indice_mot
     global mot_secret
     mot_a_deviner,indice_mot = op.choisirMot()
-    #print(mot_a_deviner,indice_mot)
     mot_secret = op.afficheMotsecret(mot_a_deviner)
-    #print(mot_secret)
     afficheMotSecret()
 
 
@@ -319,7 +317,6 @@ def traiterLettre(event):
     lettreSaisie = lettreSaisie.lower()
     print(lettreSaisie)
     listeIndice = op.indicesLettre(lettreSaisie,mot_a_deviner)
-    #print(listeIndice)
     if len(listeIndice)==0:
         score=score-1
         print("score : ", score)
@@ -328,7 +325,6 @@ def traiterLettre(event):
     else :
         for i in listeIndice:
             mot_secret = mot_secret[:i] + lettreSaisie + mot_secret[i+1:]
-            #print("".join(mot_secret))
         afficheMotSecret()
     if "".join(mot_secret).find('_') == -1:
         print("Bravo vous avez trouvé le mot. Votre score est : ",score)
@@ -355,7 +351,6 @@ Fonction :
         avec le trait de la base, le trait verticale, horizontale, oblique, corde et tête (ovale)
 '''
 def dessinerPotence():
-    #A(250,600) B(300,600) C(275,600) D(,) E(,) F(,) G(,)
     global xA,yA,xB,yB
     xA,yA,xB,yB = 130,355,250,355
     xC,yC,xD,yD = 190,355,190,100
@@ -391,7 +386,7 @@ def dessinerTete():
         dessine un visage content (sourire)
 '''
 def dessinerVisageContent():
-    canvas.delete("all")  # efface tout
+    canvas.delete("all")  
 
     canvas.create_image(0, 0, image=canvas.bg_canvas, anchor="nw")
 
@@ -411,7 +406,7 @@ def dessinerVisageContent():
         dessine un visage triste
 '''
 def dessinerVisageTriste():
-    canvas.delete("all")  # efface tout
+    canvas.delete("all")  
 
     canvas.create_image(0, 0, image=canvas.bg_canvas, anchor="nw")
 
@@ -509,11 +504,9 @@ def afficheRegles():
     page_ouverte = Frame(fen)
     page_ouverte.place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Image de fond EN PREMIER
     bg = Label(page_ouverte, image=bg_menu_image)
     bg.place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Widgets PAR DESSUS avec place (pas pack)
     Label(page_ouverte, text="Règles du jeu", font=("Arial", 30), bg="#A8E6EF").place(relx=0.5, y=40, anchor="center")
 
     regles = (
@@ -589,9 +582,8 @@ bg_menu_image = ImageTk.PhotoImage(image_menu)
 fen.title('Jeu du Pendu - Mai 2026 - V1.0')
 fen.geometry("600x700")
 
-# --- IMAGE DE FOND ---
 image_fond = Image.open("IMG_6422.jpg")
-image_fond = image_fond.resize((600, 700))  # adapter à la fenêtre
+image_fond = image_fond.resize((600, 700))  
 bg_image = ImageTk.PhotoImage(image_fond)
 
 background_label = Label(fen, image=bg_image)
@@ -646,7 +638,7 @@ frame2.grid_remove()
 canvas = Canvas(frame2, width=590, height=380, highlightthickness=0)
 canvas.grid(row=0, column=0, sticky="nsew")
 
-# Image de fond directement dans le canvas
+
 bg_canvas = ImageTk.PhotoImage(Image.open("IMG.jpg").resize((590, 380)))
 canvas.bg_canvas = bg_canvas
 canvas.create_image(0, 0, image=bg_canvas, anchor="nw")
@@ -657,7 +649,7 @@ dessinerPotence()
 '''canvas.bind("<Button-1>", pointeur)'''
 canvas.grid(row=0, column=0, sticky="nsew")
 
-#FRAME 3
+
 frame3 = Frame(fen, bg='#A8E6EF',bd=2)
 frame3.grid_remove()
 
