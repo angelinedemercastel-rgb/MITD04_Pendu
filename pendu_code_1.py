@@ -45,19 +45,19 @@ def menu_principal():
     Label(accueil, text="JEU DU PENDU", font=("Arial", 30), bg="#A8E6EF").pack(pady=50)
 
     Button(accueil, text="Jouer", width=20, height=2,
-           command=lambda: [accueil.destroy(), ouvrir_jeu()],bg="yellow").pack(pady=20)
+           command=lambda: [accueil.destroy(), ouvrir_jeu()],bg="ivory").pack(pady=20)
 
     Button(accueil, text="Ajouter un mot", width=20, height=2,
-           command=ajouterMot,bg="yellow").pack(pady=20)
+           command=ajouterMot,bg="ivory").pack(pady=20)
 
     Button(accueil, text="Règles du jeu", width=20, height=2,
-           command=afficheRegles,bg="yellow").pack(pady=20)
+           command=afficheRegles,bg="ivory").pack(pady=20)
 
     Button(accueil, text="Scores", width=20, height=2,
-           command=ouvreFichierScore,bg="yellow").pack(pady=20)
+           command=ouvreFichierScore,bg="ivory").pack(pady=20)
 
     Button(accueil, text="Quitter", width=20, height=2,
-           command=fen.destroy,bg="yellow").pack(pady=20)
+           command=fen.destroy,bg="ivory").pack(pady=20)
     
     global bg_menu_image
 
@@ -130,11 +130,11 @@ def ajouterMot():
     eIndice.place(relx=0.6, y=350, anchor="center")
 
     Button(page_ouverte, text="Valider", width=15, height=2,
-           font=("Arial", 14), bg="yellow",
+           font=("Arial", 14), bg="ivory",
            command=validerNouveauMot).place(relx=0.5, y=470, anchor="center")
 
     Button(page_ouverte, text="Retour", width=15, height=2,
-           font=("Arial", 14), bg="yellow",
+           font=("Arial", 14), bg="ivory",
            command=page_ouverte.destroy).place(relx=0.5, y=580, anchor="center")
 
 
@@ -536,7 +536,7 @@ def afficheRegles():
     Label(page_ouverte, text=regles, font=("Arial", 13), bg="#A8E6EF", justify="left").place(relx=0.5, y=300, anchor="center")
 
     Button(page_ouverte, text="Retour", width=20, height=2,
-           font=("Arial", 14), bg="yellow",
+           font=("Arial", 14), bg="ivory",
            command=page_ouverte.destroy).place(relx=0.5, y=580, anchor="center")
 
 
@@ -575,7 +575,7 @@ def ouvreFichierScore() :
     texte.place(relx=0.5, y=300, anchor="center")
 
     Button(page_ouverte, text="Retour", width=20, height=2,
-           font=("Arial", 14), bg="yellow",
+           font=("Arial", 14), bg="ivory",
            command=page_ouverte.destroy).place(relx=0.5, y=620, anchor="center")
 
 
