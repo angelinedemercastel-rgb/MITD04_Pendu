@@ -157,7 +157,7 @@ def nouveauMot():
 
 '''
 Fonction :
-        Vérifie si la case à cocher est cocher 
+        Vérifie si la case à cocher est cochée
         si oui : affcihe indice
         si non : n'affiche pas 
 '''
