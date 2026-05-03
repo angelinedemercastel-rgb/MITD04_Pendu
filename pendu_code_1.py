@@ -108,21 +108,31 @@ Fonction :
         validerNouveauMot
 '''
 def ajouterMot():
-    global eMot, eIndice,fenetreAddWord
-    fenetreAddWord = Toplevel(fen)
-    fenetreAddWord.geometry("250x100")
-    fenetreAddWord.title("Ajout mot")
-    fenetreAddWord.resizable(False, False)
-    txt1 = Label(fenetreAddWord, text = 'Mot :')
-    txt2 = Label(fenetreAddWord, text = 'Indication :')
-    buttonValidationNouveauMot = Button(fenetreAddWord, text="Valider", command=validerNouveauMot)
-    eMot = Entry(fenetreAddWord)
-    eIndice = Entry(fenetreAddWord)
-    txt1.grid(row =0, column =1,pady=5,padx=5)
-    txt2.grid(row =1, column =1,pady=5,padx=5)
-    eMot.grid(row =0, column =2,pady=5,padx=5)
-    eIndice.grid(row =1, column =2,pady=5,padx=5)
-    buttonValidationNouveauMot.grid(row =3, column =1,columnspan=2, pady=5,padx=5)
+    global eMot, eIndice, page_ouverte
+    page_ouverte = Frame(fen)
+    page_ouverte.place(x=0, y=0, relwidth=1, relheight=1)
+
+    bg = Label(page_ouverte, image=bg_menu_image)
+    bg.place(x=0, y=0, relwidth=1, relheight=1)
+
+    Label(page_ouverte, text="Ajouter un mot", font=("Arial", 30), bg="#A8E6EF").place(relx=0.5, y=80, anchor="center")
+
+    Label(page_ouverte, text="Mot :", font=("Arial", 16), bg="#A8E6EF").place(relx=0.3, y=250, anchor="center")
+    eMot = Entry(page_ouverte, width=20, font=("Arial", 16))
+    eMot.place(relx=0.6, y=250, anchor="center")
+
+    Label(page_ouverte, text="Indication :", font=("Arial", 16), bg="#A8E6EF").place(relx=0.3, y=350, anchor="center")
+    eIndice = Entry(page_ouverte, width=20, font=("Arial", 16))
+    eIndice.place(relx=0.6, y=350, anchor="center")
+
+    Button(page_ouverte, text="Valider", width=15, height=2,
+           font=("Arial", 14), bg="yellow",
+           command=validerNouveauMot).place(relx=0.5, y=470, anchor="center")
+
+    Button(page_ouverte, text="Retour", width=15, height=2,
+           font=("Arial", 14), bg="yellow",
+           command=page_ouverte.destroy).place(relx=0.5, y=580, anchor="center")
+
 
 
 '''
@@ -524,12 +534,25 @@ def ouvreFichierScore() :
     contenu = FichierScore.read()
     FichierScore.close()
 
-    fenetre = Toplevel(fen)
-    fenetre.title("Scores")
-    texte = Text(fenetre, width=40, height=10)
+    global page_ouverte
+    page_ouverte = Frame(fen)
+    page_ouverte.place(x=0, y=0, relwidth=1, relheight=1)
+
+    bg = Label(page_ouverte, image=bg_menu_image)
+    bg.place(x=0, y=0, relwidth=1, relheight=1)
+
+    Label(page_ouverte, text="Scores", font=("Arial", 30), bg="#A8E6EF").place(relx=0.5, y=40, anchor="center")
+
+    texte = Text(page_ouverte, width=40, height=15, font=("Arial", 14))
     texte.insert("1.0", contenu)
     texte.config(state="disabled")
-    texte.pack(padx=10, pady=10)
+    texte.place(relx=0.5, y=300, anchor="center")
+
+    Button(page_ouverte, text="Retour", width=20, height=2,
+           font=("Arial", 14), bg="yellow",
+           command=page_ouverte.destroy).place(relx=0.5, y=620, anchor="center")
+
+
 
 lettreSaisie =""
 mot_secret = ""
