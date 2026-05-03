@@ -10,6 +10,7 @@ from PIL import Image, ImageTk
 '''
 def ouvrir_jeu():
     global score
+    score = 7 
     frame1.grid()
     frame2.grid()
     frame3.grid()
