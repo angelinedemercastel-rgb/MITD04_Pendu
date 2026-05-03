@@ -9,11 +9,14 @@ from PIL import Image, ImageTk
         et choisi un nouveau mot et remet le score à 7 chances
 '''
 def ouvrir_jeu():
+    global score
     frame1.grid()
     frame2.grid()
     frame3.grid()
     nouveauMot()
     afficheScore()
+    active_entry()
+    ent_saisie.focus_set()
 
 
 ''' Fonction :
@@ -38,7 +41,7 @@ def menu_principal():
     accueil = Frame(fen, bg="ivory")
     accueil.place(relwidth=1, relheight=1)
 
-    Label(accueil, text="JEU DU PENDU", font=("Arial", 30), bg="yellow").pack(pady=50)
+    Label(accueil, text="JEU DU PENDU", font=("Arial", 30), bg="#A8E6EF").pack(pady=50)
 
     Button(accueil, text="Jouer", width=20, height=2,
            command=lambda: [accueil.destroy(), ouvrir_jeu()],bg="yellow").pack(pady=20)
@@ -91,13 +94,12 @@ Fonction : validerNouveauMot
 
 '''
 def validerNouveauMot():
+    global page_ouverte
     mot=eMot.get()
-    #print(mot)
     indice=eIndice.get()
-    #print(indice)
     if len(mot)!=0 :
         op.ajouterMotIHM(op.cheminFichier,mot,indice)
-    fenetreAddWord.destroy()
+    page_ouverte.destroy()
 
 
 '''
@@ -491,19 +493,39 @@ def effacePendu():
         tant que cette fenêtre est ouvert, l'utilisateur ne pourra pas jouer
 '''
 def afficheRegles():
-    window = Toplevel(fen)# Création d'une nouvelle fenêtre
-    window.title("Règles du jeu")# Définition du titre
-    window.geometry("300x200")# Dimensions de la fenêtre
+    global page_ouverte
+    page_ouverte = Frame(fen)
+    page_ouverte.place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Personnalisation de la fenêtre
-    window.configure(bg="ivory",relief="raised")# Changement de couleur de fond et du relief
+    # Image de fond EN PREMIER
+    bg = Label(page_ouverte, image=bg_menu_image)
+    bg.place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Gestion des interactions avec la fenêtre
-    window.transient(fen)# Place la fenêtre fille au-dessus de la fenêtre parent
-    window.grab_set()# Empêche l'utilisateur d'interagir avec la fenêtre parent
-    window.focus_set()# Donne le focus à la fenêtre fille
-    label= Label(window, text= "Le but du jeu est simple : \n deviner toute les lettres \n qui doivent composer un mot,\n avec un nombre de tentatives \n limité à 6. \n A chaque fois que le joueur \n devine une lettre, celle-ci est\n affichée. Dans le cas contraire,\n le dessin d’un pendu se met à \n apparaître…", font= ('Aerial', 12))
-    label.pack()
+    # Widgets PAR DESSUS avec place (pas pack)
+    Label(page_ouverte, text="Règles du jeu", font=("Arial", 30), bg="#A8E6EF").place(relx=0.5, y=40, anchor="center")
+
+    regles = (
+        "🎯 OBJECTIF\n"
+        "Deviner le mot caché lettre par lettre avant que le pendu soit dessiné.\n\n"
+        "📝 COMMENT JOUER\n"
+        "Tape une lettre dans la case et appuie sur Entrée.\n"
+        "Si la lettre est dans le mot → elle apparaît à sa place.\n"
+        "Si la lettre n'est pas dans le mot → une partie du pendu se dessine.\n\n"
+        "💡 INDICE\n"
+        "Coche la case 'Indice' pour obtenir un indice sur le mot.\n\n"
+        "⚠️ ATTENTION\n"
+        "Tu as seulement 7 tentatives maximum.\n"
+        "À chaque mauvaise lettre tu perds une chance.\n\n"
+        "🏆 VICTOIRE & DÉFAITE\n"
+        "Trouve toutes les lettres avant 0 chance → Tu gagnes !\n"
+        "Le pendu est complet → Tu perds et le mot est révélé.\n\n"
+        "Bonne chance ! 🍀"
+    )
+    Label(page_ouverte, text=regles, font=("Arial", 13), bg="#A8E6EF", justify="left").place(relx=0.5, y=300, anchor="center")
+
+    Button(page_ouverte, text="Retour", width=20, height=2,
+           font=("Arial", 14), bg="yellow",
+           command=page_ouverte.destroy).place(relx=0.5, y=580, anchor="center")
 
 
 '''Fonction : 
@@ -524,18 +546,23 @@ def ouvreFichierScore() :
     contenu = FichierScore.read()
     FichierScore.close()
 
-    fenetre = Toplevel(fen)
-    fenetre.title("Scores")
-    texte = Text(fenetre, width=40, height=10)
+   global page_ouverte
+    page_ouverte = Frame(fen)
+    page_ouverte.place(x=0, y=0, relwidth=1, relheight=1)
+
+    bg = Label(page_ouverte, image=bg_menu_image)
+    bg.place(x=0, y=0, relwidth=1, relheight=1)
+
+    Label(page_ouverte, text="Scores", font=("Arial", 30), bg="#A8E6EF").place(relx=0.5, y=40, anchor="center")
+
+    texte = Text(page_ouverte, width=40, height=15, font=("Arial", 14))
     texte.insert("1.0", contenu)
     texte.config(state="disabled")
-    texte.pack(padx=10, pady=10)
+    texte.place(relx=0.5, y=300, anchor="center")
 
-lettreSaisie =""
-mot_secret = ""
-mot_a_deviner = ""
-indice_mot = ""
-score=7
+    Button(page_ouverte, text="Retour", width=20, height=2,
+           font=("Arial", 14), bg="yellow",
+           command=page_ouverte.destroy).place(relx=0.5, y=620, anchor="center")
 
 
 
@@ -579,21 +606,21 @@ funcList.append(dessinerBouche)
 funcList.append(dessinerTete)
 
 #FRAME 1
-frame1 = Frame(fen, bg='ivory',bd=2)
+frame1 = Frame(fen, bg='#A8E6EF',bd=2)
 frame1.grid_remove()
 
-lbl_score = Label(frame1, text="Score : ", font="Arial 12",bg='ivory').grid(row=1, column=1,pady=5,padx=5)
-lbl_score_value = Label(frame1, text="", font="Arial 12",bg='ivory')
+lbl_score = Label(frame1, text="Score : ", font="Arial 12",bg='#A8E6EF').grid(row=1, column=1,pady=5,padx=5)
+lbl_score_value = Label(frame1, text="", font="Arial 12",bg='#A8E6EF')
 lbl_score_value.grid(row=1, column=2,pady=5,padx=5)
 
-lbl_motATrouver = Label(frame1, text="Mot à trouver : ", font="Arial 12",bg='ivory').grid(row=2, column=1,pady=5,padx=5)
+lbl_motATrouver = Label(frame1, text="Mot à trouver : ", font="Arial 12",bg='#A8E6EF').grid(row=2, column=1,pady=5,padx=5)
 
-lbl_motSecret = Label(frame1, text="", font="Arial 16",bg='ivory')
+lbl_motSecret = Label(frame1, text="", font="Arial 16",bg='#A8E6EF')
 lbl_motSecret.grid(row=2, column=2,pady=5,padx=5)
 '''lbl_chaine = Label(frame1, text="")
 lbl_chaine.grid(row=1, column=2)'''
 
-lbl_resultat = Label(frame1, text="", font="Arial 14",bg='ivory')
+lbl_resultat = Label(frame1, text="", font="Arial 14",bg='#A8E6EF')
 lbl_resultat.grid(row=2, column=4)
 
 #FRAME 2
@@ -617,28 +644,28 @@ dessinerPotence()
 canvas.grid(row=0, column=0, sticky="nsew")
 
 #FRAME 3
-frame3 = Frame(fen, bg='ivory',bd=2)
+frame3 = Frame(fen, bg='#A8E6EF',bd=2)
 frame3.grid_remove()
 
 indiceOn= IntVar()
 cac_indice = Checkbutton(frame3, text = "Indice",
-                            height = 2, width = 10, font="Arial 12",bg='ivory',
+                            height = 2, width = 10, font="Arial 12",bg='#A8E6EF',
                             variable=indiceOn,
                             command=checkCacIndice)
 cac_indice.grid(row=1, column=0,pady=5,padx=5)
 
-lbl_indice = Label(frame3, text="", font="Arial 12",bg='ivory')
+lbl_indice = Label(frame3, text="", font="Arial 12",bg='#A8E6EF')
 lbl_indice.grid(row=1, column=2,pady=5,padx=5)
 
 
-lbl_Proposition = Label(frame3, text="Proposition de lettre : ", font="Arial 12",bg='ivory').grid(row=2, column=0,pady=5,padx=5)
+lbl_Proposition = Label(frame3, text="Proposition de lettre : ", font="Arial 12",bg='#A8E6EF').grid(row=2, column=0,pady=5,padx=5)
 
 ent_saisie = Entry(frame3, width=3, font="Arial 12")
 ent_saisie.grid(row=2, column=1,pady=15,padx=5, sticky='w')
 ent_saisie.bind("<Return>",traiterLettre)
 
 
-lbl_MessageErreur = Label(frame3, text="", font="Arial 12",bg='ivory',fg='red')
+lbl_MessageErreur = Label(frame3, text="", font="Arial 12",bg='#A8E6EF',fg='red')
 lbl_MessageErreur.grid(row=2, column=2,pady=5,padx=5)
 
 btn_rejouer = Button(frame3, text="Rejouer",font="Arial 12",bg='ivory',command=rejouer)
