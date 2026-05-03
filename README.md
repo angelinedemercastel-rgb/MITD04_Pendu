@@ -1,4 +1,4 @@
-# MITD04_Pendu
+[organigramme_pendu.pdf](https://github.com/user-attachments/files/27318654/organigramme_pendu.pdf)# MITD04_Pendu
 
 ## Description du projet du Jeu du Pendu
 
@@ -12,6 +12,9 @@
 * Enregistrement et depuis le menu accès aux scores
 * Ajout d'un nouveau mot et de son indice
 * Affichage des règles du jeu
+
+## Organigrame du jeu
+<img width="595" height="841" alt="organigramme_pendu" src="https://github.com/user-attachments/assets/0e3fca69-abef-4586-8da7-60efbeae3f47" />
 
 ## Fichiers mots et score
 
